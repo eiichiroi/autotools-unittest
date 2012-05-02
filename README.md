@@ -16,11 +16,11 @@ Requirements
 Example
 -------
 
-* Change package name from 'autotools-unittest' to your library name(ex. maxcoffee)
+* Change package name from 'autotools-unittest' to your library name(ex. mylib)
 
 `
-$ ./scripts/change_package_name.sh maxcoffee
-Changing package name from 'autotools-unittest' to 'maxcoffee' ... Are you sure? [yes/NO]: yes
+$ ./scripts/change_package_name.sh mylib
+Changing package name from 'autotools-unittest' to 'mylib' ... Are you sure? [yes/NO]: yes
 ===========================================================================
 Following directory names will be changed.
 
@@ -36,16 +36,16 @@ Are you sure? [yes/NO]: yes
 Following file contents will be changed.
 
 * ./configure.ac
-* ./test/maxcoffee/Makefile.am
-* ./test/maxcoffee/sample_test.cpp
+* ./test/mylib/Makefile.am
+* ./test/mylib/sample_test.cpp
 * ./test/Makefile.am
 * ./src/Makefile.am
 
 Are you sure? [yes/NO]: yes
 
 * ./configure.ac ... done.
-* ./test/maxcoffee/Makefile.am ... done.
-* ./test/maxcoffee/sample_test.cpp ... done.
+* ./test/mylib/Makefile.am ... done.
+* ./test/mylib/sample_test.cpp ... done.
 * ./test/Makefile.am ... done.
 * ./src/Makefile.am ... done.
 
