@@ -75,9 +75,21 @@ $ make check
 
 * Write your library
 
+Tips
+----
+
+* Disable gmock
+
+If you don't use gmock, you can avoid unnecessary gmock's build by using --disable-gmock option.
+
+`
+$ ./configure --disable-gmock
+$ make
+$ make check
+`
+
 TODO
 ----
 
-* Support to disable google-gmock via configure flag
 * Support various tests such as *make check-integration* or *make check-fuzzing*
 
