@@ -51,6 +51,14 @@ Are you sure? [yes/NO]: yes
 
 `
 
+Change top directory name yourself.
+
+`
+$ cd ..
+$ mv autotools-unittest mylib
+$ cd mylib
+`
+
 * Build sample codes
 
 `
