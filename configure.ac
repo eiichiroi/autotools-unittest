@@ -45,6 +45,25 @@ AC_SUBST([GTEST_CXXFLAGS])
 AC_SUBST([GTEST_LDFLAGS])
 AC_SUBST([GTEST_LIBS])
 
+# Define variables for unit test using gtest and gmock
+# TODO: extract GMOCK_VERSION from gmock's directory
+AC_SUBST([GMOCK_VERSION], ["1.6.0"])
+if test "x$have_pthread" = "xyes"; then
+  GMOCK_CPPFLAGS="-DGTEST_HAS_PTHREAD=1 -I\$(top_srcdir)/lib/gmock-$GMOCK_VERSION"
+  GMOCK_CXXFLAGS="$PTHREAD_CFLAGS"
+  GMOCK_LDFLAGS="-L\$(top_builddir)/lib/gmock-$GMOCK_VERSION"
+  GMOCK_LIBS="$PTHREAD_LIBS"
+else
+  GMOCK_CPPFLAGS="-DGTEST_HAS_PTHREAD=0 -I\$(top_srcdir)/lib/gmock-$GMOCK_VERSION"
+  GMOCK_CXXFLAGS=
+  GMOCK_LDFLAGS="-L\$(top_builddir)/lib/gmock-$GMOCK_VERSION"
+  GMOCK_LIBS=
+fi
+AC_SUBST([GMOCK_CPPFLAGS])
+AC_SUBST([GMOCK_CXXFLAGS])
+AC_SUBST([GMOCK_LDFLAGS])
+AC_SUBST([GMOCK_LIBS])
+
 # Check for header files.
 
 # Check for typedefs, structures, and compiler characteristics.
@@ -62,7 +81,7 @@ AC_CONFIG_HEADERS([config.h])
 
 # Declare output files.
 AC_CONFIG_FILES([Makefile
-                 lib/Makefile lib/gtest-1.6.0/Makefile
+                 lib/Makefile lib/gtest-1.6.0/Makefile lib/gmock-1.6.0/Makefile
                  src/Makefile src/autotools-unittest/Makefile
                  test/Makefile test/autotools-unittest/Makefile])
 

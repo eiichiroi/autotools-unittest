@@ -1,9 +1,10 @@
 autotools-unittest
 ==================
 
-The autotools-unittest is a minimal starter kit when writing library
-with autotools and google test(gtest).
-This include gtest-1.6.0, so you can use gtest without installation.
+The autotools-unittest is a minimal starter kit when writing C++ library
+with autotools, google test(gtest) and google mock(gmock).
+This include gtest-1.6.0 and gmock-1.6.0,
+so you can use those testing framework without installation.
 
 Requirements
 ------------
@@ -58,7 +59,7 @@ $ ./configure
 $ make
 `
 
-* Build gtest and unit tests for sample codes, and run them
+* Build gtest, gmock and unit tests for sample codes, and run them
 
 `
 $ make check
@@ -69,6 +70,6 @@ $ make check
 TODO
 ----
 
-* Support google-gmock
+* Support to disable google-gmock via configure flag
 * Support various tests such as *make check-integration* or *make check-fuzzing*
 
