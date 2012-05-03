@@ -19,14 +19,14 @@ Example
 0. Download the package and extract it
 
 ```
-$ wget http://github.com/downloads/eiichiroi/autotools-unittest/autotools-unittest-0.1.0.tar.gz
-$ tar xzf autotools-unittest-0.1.0.tar.gz
+$ wget http://github.com/downloads/eiichiroi/autotools-unittest/autotools-unittest-0.2.0.tar.gz
+$ tar xzf autotools-unittest-0.2.0.tar.gz
 ```
 
 1. Change directory name to your library name(ex. mylib) and move into the directory
 
 ```
-$ mv autotools-unittest-0.1.0 mylib
+$ mv autotools-unittest-0.2.0 mylib
 $ cd mylib
 ```
 
