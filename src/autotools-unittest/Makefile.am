@@ -1,4 +1,4 @@
-include_HEADERS = \
+nobase_pkginclude_HEADERS = \
   sample.hpp
 
 lib_LTLIBRARIES = \
