@@ -16,7 +16,15 @@ Requirements
 Example
 -------
 
-* Change package name from 'autotools-unittest' to your library name(ex. mylib)
+0. Download autotools-unittest package and extract it
+
+```
+$ wget http://github.com/downloads/eiichiroi/autotools-unittest/autotools-unittest-0.1.0.tar.gz
+$ tar xzf autotools-unittest-0.1.0.tar.gz
+$ cd autotools-unittest-0.1.0
+```
+
+1. Change package name from 'autotools-unittest' to your library name(ex. mylib)
 
 ```
 $ ./scripts/change_package_name.sh mylib
@@ -51,7 +59,7 @@ Are you sure? [yes/NO]: yes
 
 ```
 
-Change top directory name yourself.
+2. Change top directory name yourself.
 
 ```
 $ cd ..
@@ -59,7 +67,7 @@ $ mv autotools-unittest mylib
 $ cd mylib
 ```
 
-* Build sample codes
+3. Build sample codes
 
 ```
 $ ./autogen.sh
@@ -67,13 +75,13 @@ $ ./configure
 $ make
 ```
 
-* Build gtest, gmock and unit tests for sample codes, and run them
+4. Build gtest, gmock and unit tests for sample codes, and run them
 
 ```
 $ make check
 ```
 
-* Write your library
+5. Write your library
 
 Tips
 ----
@@ -87,6 +95,20 @@ $ ./configure --disable-gmock
 $ make
 $ make check
 ```
+
+* Use advanced gtest options
+
+You can use advanced gtest options(GTEST_xxx) via environment variables for automake(TESTS_ENVIRONMENT).
+
+For example, you can filter test cases as follows.
+
+```
+$ TESTS_ENVIRONMENT="GTEST_FILTER='square.*'" make check
+```
+
+For more information about advanced options, please see the following page.
+
+http://code.google.com/p/googletest/wiki/V1_6_AdvancedGuide#Running_Test_Programs:_Advanced_Options
 
 TODO
 ----
