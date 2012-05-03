@@ -36,16 +36,14 @@ $ cd mylib
 $ ./scripts/change_package_name.sh mylib
 Changing package name from 'autotools-unittest' to 'mylib' ... Are you sure? [yes/NO]: yes
 ===========================================================================
-Following directory names will be changed.
 
 * ./src/autotools-unittest
 
-Are you sure? [yes/NO]: yes
+These directory names listed above will be changed. Are you sure? [yes/NO]: yes
 
 * ./src/autotools-unittest ... done.
 
 ===========================================================================
-Following file contents will be changed.
 
 * ./configure.ac
 * ./test/sample_with_mock_test.cpp
@@ -53,7 +51,7 @@ Following file contents will be changed.
 * ./test/sample_test.cpp
 * ./src/Makefile.am
 
-Are you sure? [yes/NO]: yes
+These contents of files listed above will be changed. Are you sure? [yes/NO]: yes
 
 * ./configure.ac ... done.
 * ./test/sample_with_mock_test.cpp ... done.
