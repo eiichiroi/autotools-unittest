@@ -18,7 +18,7 @@ Example
 
 * Change package name from 'autotools-unittest' to your library name(ex. mylib)
 
-<pre><code>
+```
 $ ./scripts/change_package_name.sh mylib
 Changing package name from 'autotools-unittest' to 'mylib' ... Are you sure? [yes/NO]: yes
 ===========================================================================
@@ -49,29 +49,29 @@ Are you sure? [yes/NO]: yes
 * ./test/Makefile.am ... done.
 * ./src/Makefile.am ... done.
 
-</code></pre>
+```
 
 Change top directory name yourself.
 
-<pre><code>
+```
 $ cd ..
 $ mv autotools-unittest mylib
 $ cd mylib
-</code></pre>
+```
 
 * Build sample codes
 
-<pre><code>
+```
 $ ./autogen.sh
 $ ./configure
 $ make
-</code></pre>
+```
 
 * Build gtest, gmock and unit tests for sample codes, and run them
 
-<pre><code>
+```
 $ make check
-</code></pre>
+```
 
 * Write your library
 
@@ -82,11 +82,11 @@ Tips
 
 If you don't use gmock, you can avoid unnecessary gmock's build by using --disable-gmock option.
 
-<pre><code>
+```
 $ ./configure --disable-gmock
 $ make
 $ make check
-</code></pre>
+```
 
 TODO
 ----
