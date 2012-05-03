@@ -92,6 +92,7 @@ AC_CONFIG_HEADERS([config.h])
 
 # Declare output files.
 AC_CONFIG_FILES([Makefile
+                 scripts/Makefile
                  lib/Makefile lib/gtest-1.6.0/Makefile lib/gmock-1.6.0/Makefile
                  src/Makefile src/autotools-unittest/Makefile
                  test/Makefile test/autotools-unittest/Makefile])

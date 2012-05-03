@@ -1,4 +1,11 @@
+noinst_SCRIPTS = \
+  autogen.sh
+
+EXTRA_DIST = \
+  autogen.sh
+
 SUBDIRS = \
+  scripts \
   lib \
   src \
   test
