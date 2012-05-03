@@ -92,12 +92,12 @@ $ make check
 
 * Use advanced gtest options
 
-You can use advanced gtest options(GTEST_xxx) via environment variables for automake(TESTS_ENVIRONMENT).
+You can use advanced gtest options via environment variables(GTEST_xxx).
 
 For example, you can filter test cases as follows.
 
 ```
-$ TESTS_ENVIRONMENT="GTEST_FILTER='square.*'" make check
+$ GTEST_FILTER="square.*" make check
 ```
 
 For more information about advanced options, please see the following page.
