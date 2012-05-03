@@ -16,15 +16,21 @@ Requirements
 Example
 -------
 
-0. Download autotools-unittest package and extract it
+0. Download the package and extract it
 
 ```
 $ wget http://github.com/downloads/eiichiroi/autotools-unittest/autotools-unittest-0.1.0.tar.gz
 $ tar xzf autotools-unittest-0.1.0.tar.gz
-$ cd autotools-unittest-0.1.0
 ```
 
-1. Change package name from 'autotools-unittest' to your library name(ex. mylib)
+1. Change directory name to your library name(ex. mylib) and move into the directory
+
+```
+$ mv autotools-unittest-0.1.0 mylib
+$ cd mylib
+```
+
+2. Change package name from 'autotools-unittest' to your library name
 
 ```
 $ ./scripts/change_package_name.sh mylib
@@ -32,39 +38,29 @@ Changing package name from 'autotools-unittest' to 'mylib' ... Are you sure? [ye
 ===========================================================================
 Following directory names will be changed.
 
-* ./test/autotools-unittest
 * ./src/autotools-unittest
 
 Are you sure? [yes/NO]: yes
 
-* ./test/autotools-unittest ... done.
 * ./src/autotools-unittest ... done.
 
 ===========================================================================
 Following file contents will be changed.
 
 * ./configure.ac
-* ./test/mylib/Makefile.am
-* ./test/mylib/sample_test.cpp
+* ./test/sample_with_mock_test.cpp
 * ./test/Makefile.am
+* ./test/sample_test.cpp
 * ./src/Makefile.am
 
 Are you sure? [yes/NO]: yes
 
 * ./configure.ac ... done.
-* ./test/mylib/Makefile.am ... done.
-* ./test/mylib/sample_test.cpp ... done.
+* ./test/sample_with_mock_test.cpp ... done.
 * ./test/Makefile.am ... done.
+* ./test/sample_test.cpp ... done.
 * ./src/Makefile.am ... done.
 
-```
-
-2. Change top directory name yourself.
-
-```
-$ cd ..
-$ mv autotools-unittest mylib
-$ cd mylib
 ```
 
 3. Build sample codes

@@ -75,7 +75,6 @@ fi
 directories=`find . -type d -name "$old_package_name"`
 if [ -n "$directories" ]; then
   echo '==========================================================================='
-  echo 'Following directory names will be changed.'
   echo ''
   echo "$directories" | while read directory
   do
@@ -83,7 +82,7 @@ if [ -n "$directories" ]; then
   done
   echo ''
 
-  confirm_with_default_no 'Are you sure?'
+  confirm_with_default_no 'These directory names listed above will be changed. Are you sure?'
   if [ $? -eq 0 ]; then
     echo 'Not changed.'
   else
@@ -106,7 +105,6 @@ fi
 files=`find . -type f -name '*.ac' -o -name '*.am' -o -name '*.hpp' -o -name '*.cpp' | xargs grep -l "$old_package_name"`
 if [ -n "$files" ]; then
   echo '==========================================================================='
-  echo 'Following file contents will be changed.'
   echo ''
   echo "$files" | while read file
   do
@@ -114,7 +112,7 @@ if [ -n "$files" ]; then
   done
   echo ''
 
-  confirm_with_default_no 'Are you sure?'
+  confirm_with_default_no 'These contents of files listed above will be changed. Are you sure?'
   if [ $? -eq 0 ]; then
     echo 'Not changed.'
   else
