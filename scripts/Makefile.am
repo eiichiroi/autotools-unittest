@@ -1,5 +1,2 @@
-noinst_SCRIPTS = \
-  change_package_name.sh
-
-EXTRA_DIST = \
+dist_noinst_SCRIPTS = \
   change_package_name.sh

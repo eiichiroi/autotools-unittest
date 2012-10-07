@@ -1,7 +1,4 @@
-noinst_SCRIPTS = \
-  autogen.sh
-
-EXTRA_DIST = \
+dist_noinst_SCRIPTS = \
   autogen.sh
 
 SUBDIRS = \
