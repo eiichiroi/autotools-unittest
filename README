@@ -80,16 +80,6 @@ $ make check
 Tips
 ----
 
-* Disable gmock
-
-If you don't use gmock, you can avoid unnecessary gmock's build by using --disable-gmock option.
-
-```
-$ ./configure --disable-gmock
-$ make
-$ make check
-```
-
 * Use advanced gtest options
 
 You can use advanced gtest options via environment variables(GTEST_xxx).
