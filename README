@@ -75,6 +75,29 @@ $ make check
 Tips
 ----
 
+* Use coverage reporting
+
+You can use coverage reporting feature if lcov is installed in your environment.
+
+```
+$ ./configure --enable-coverage
+$ make coverage
+...
+Successfully created coverage reports into ./coverage directory.
+```
+
+Please check "./coverage/index.html".
+
+By default, source codes will be complied with no-optimization(-O0 option) to get more precise results.
+
+If you would like to get coverage reports with optimization, please use COVERAGE_OPTIMIZATION_FLAGS variables like this.
+
+```
+$ make coverage COVERAGE_OPTIMIZATION_FLAGS="-O2"
+```
+
+Please take care that coverage reports with optimization results in unexpected one.
+
 * Use advanced gtest options
 
 You can use advanced gtest options via environment variables(GTEST_xxx).

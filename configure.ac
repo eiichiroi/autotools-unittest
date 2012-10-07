@@ -51,6 +51,9 @@ AC_SUBST([GTEST_CXXFLAGS])
 AC_SUBST([GTEST_LDFLAGS])
 AC_SUBST([GTEST_LIBS])
 
+# Checks for existence of coverage tools and define variables for reporting coverage
+AC_CHECK_COVERAGE
+
 # Check for header files.
 
 # Check for typedefs, structures, and compiler characteristics.
@@ -86,4 +89,7 @@ Configure Information:
 
   LDFLAGS           : $LDFLAGS
   LIBS              : $LIBS
+
+Supported Build Features:
+  Coverage Reports  : $ENABLE_COVERAGE
 ])

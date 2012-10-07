@@ -54,10 +54,13 @@ check_PROGRAMS=
 TESTS += test/sample_test
 check_PROGRAMS += test/sample_test
 test_sample_test_SOURCES = test/sample_test.cpp
-test_sample_test_CPPFLAGS = -I$(top_srcdir)/src/ $(GTEST_CPPFLAGS)
+test_sample_test_CPPFLAGS = -I$(top_srcdir)/src $(GTEST_CPPFLAGS)
 test_sample_test_CXXFLAGS = $(GTEST_CXXFLAGS)
 test_sample_test_LDFLAGS = $(GTEST_LDFLAGS)
 test_sample_test_LDADD = src/autotools-unittest/libsample.la \
                          $(GTEST_LIBS) \
                          lib/gmock/libgmock_main.la \
                          lib/gmock/libgmock.la
+
+include Makefile.am.coverage
+

@@ -25,4 +25,8 @@ Makefile.in
 *.o
 *.lo
 *.la
-test/*/*_test
+*_test
+coverage.info
+coverage
+*.gcno
+*.gcda
