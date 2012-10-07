@@ -13,7 +13,8 @@ AC_CONFIG_AUX_DIR([build-aux])
 #   -Wall: Turn all warnings on.
 #   -Werror: Report warnings as errors.
 #   foreign: ignores some GNU Coding Standards.
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+#   subdirs-objects: Create objects in sub-direcotories
+AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 
 # Initialize Libtool.
 LT_INIT
@@ -52,7 +53,7 @@ AC_SUBST([GTEST_LIBS])
 # Check for library functions.
 
 # Check for the existance of a file in the source directory.
-AC_CONFIG_SRCDIR([src/Makefile.am])
+AC_CONFIG_SRCDIR([src/autotools-unittest])
 
 # Output files.
 # AC_CONFIG_HEADERS(HEADERS...)
@@ -61,11 +62,7 @@ AC_CONFIG_SRCDIR([src/Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 
 # Declare output files.
-AC_CONFIG_FILES([Makefile
-                 scripts/Makefile
-                 lib/Makefile lib/gmock/Makefile
-                 src/Makefile src/autotools-unittest/Makefile
-                 test/Makefile])
+AC_CONFIG_FILES([Makefile])
 
 # Actually output all declared files.
 AC_OUTPUT

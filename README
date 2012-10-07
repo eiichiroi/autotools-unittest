@@ -46,19 +46,14 @@ These directory names listed above will be changed. Are you sure? [yes/NO]: yes
 ===========================================================================
 
 * ./configure.ac
-* ./test/sample_with_mock_test.cpp
-* ./test/Makefile.am
 * ./test/sample_test.cpp
-* ./src/Makefile.am
+* ./Makefile.am
 
 These contents of files listed above will be changed. Are you sure? [yes/NO]: yes
 
 * ./configure.ac ... done.
-* ./test/sample_with_mock_test.cpp ... done.
-* ./test/Makefile.am ... done.
 * ./test/sample_test.cpp ... done.
-* ./src/Makefile.am ... done.
-
+* ./Makefile.am ... done.
 ```
 
 3. Build sample codes
