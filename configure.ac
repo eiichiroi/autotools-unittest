@@ -54,6 +54,9 @@ AC_SUBST([GTEST_LIBS])
 # Checks for existence of coverage tools and define variables for reporting coverage
 AC_CHECK_COVERAGE
 
+# Check python for the script checking coding style
+AC_CHECK_PROG(HAVE_PYTHON, python, yes, no)
+
 # Check for header files.
 
 # Check for typedefs, structures, and compiler characteristics.
@@ -91,5 +94,6 @@ Configure Information:
   LIBS              : $LIBS
 
 Supported Build Features:
-  Coverage Reports  : $ENABLE_COVERAGE
+  Coverage Reprots      : $ENABLE_COVERAGE
+  Coding Style Checks   : $HAVE_PYTHON
 ])

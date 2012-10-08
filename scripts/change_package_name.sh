@@ -53,6 +53,11 @@ canonicalize()
   echo -n $1 | tr --complement "[:alnum:]@" "_"
 }
 
+upcase()
+{
+  echo -n $1 | tr "[:lower:]" "[:upper:]"
+}
+
 while getopts o: opts
 do
   case $opts in
@@ -72,6 +77,9 @@ new_package_name=$1
 
 canonicalized_old_package_name=`canonicalize $old_package_name`
 canonicalized_new_package_name=`canonicalize $new_package_name`
+
+upcased_old_package_name=`upcase $canonicalized_old_package_name`
+upcased_new_package_name=`upcase $canonicalized_new_package_name`
 
 confirm_with_default_no "Changing package name from '$old_package_name' to '$new_package_name' ... Are you sure?"
 if [ $? -eq 0 ]; then
@@ -110,7 +118,7 @@ if [ -n "$directories" ]; then
 fi
 
 # change file contents
-files=`find . -type f -name '*.ac' -o -name '*.am' -o -name '*.hpp' -o -name '*.cpp' | xargs grep -E -l "($old_package_name|$canonicalized_old_package_name)"`
+files=`find . -type f -name '*.ac' -o -name '*.am' -o -name '*.cc' -o -name '*.cpp' -o -name "*.h" | xargs grep -E -l "($old_package_name|$canonicalized_old_package_name|$upcased_old_package_name)"`
 if [ -n "$files" ]; then
   echo '==========================================================================='
   echo ''
@@ -130,6 +138,7 @@ if [ -n "$files" ]; then
       echo -n "* $file ... "
       sed -i -e "s/$old_package_name/$new_package_name/g" "$file"
       sed -i -e "s/$canonicalized_old_package_name/$canonicalized_new_package_name/g" "$file"
+      sed -i -e "s/$upcased_old_package_name/$upcased_new_package_name/g" "$file"
       if [ $? -eq 0 ]; then
         echo 'done.'
       else

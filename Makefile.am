@@ -4,7 +4,11 @@ ACLOCAL_AMFLAGS = -I m4
 # Nonstandard package files for distribution.
 EXTRA_DIST = \
   autogen.sh \
-  scripts/change_package_name.sh
+  scripts/change_package_name.sh \
+  scripts/cpplint.py
+
+AM_CPPFLAGS = \
+  -I$(top_srcdir)/src
 
 # Build rules for testing framework.
 check_LTLIBRARIES = \
@@ -33,13 +37,13 @@ lib_gmock_libgmock_main_la_LIBADD = \
 
 # Build rules for libraries.
 pkginclude_HEADERS = \
-  src/autotools-unittest/sample.hpp
+  src/autotools-unittest/sample.h
 
 lib_LTLIBRARIES = \
   src/autotools-unittest/libsample.la
 
 src_autotools_unittest_libsample_la_SOURCES = \
-  src/autotools-unittest/sample.hpp \
+  src/autotools-unittest/sample.h \
   src/autotools-unittest/sample.cpp
 
 # Build rules for tests.
@@ -63,4 +67,4 @@ test_sample_test_LDADD = src/autotools-unittest/libsample.la \
                          lib/gmock/libgmock.la
 
 include Makefile.am.coverage
-
+include Makefile.am.checkstyle

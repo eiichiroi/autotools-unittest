@@ -27,14 +27,16 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <gtest/gtest.h>
+#ifndef SRC_AUTOTOOLS_UNITTEST_SAMPLE_H_
+#define SRC_AUTOTOOLS_UNITTEST_SAMPLE_H_
 
-#include "autotools-unittest/sample.h"
+int square(int n);
 
-TEST(square, seven) {
-  EXPECT_EQ(49, square(7));
+inline int factorial(int n) {
+  if (n <= 1) {
+    return 1;
+  }
+  return n * factorial(n-1);
 }
 
-TEST(factorial, ten) {
-  EXPECT_EQ(3628800, factorial(10));
-}
+#endif  // SRC_AUTOTOOLS_UNITTEST_SAMPLE_H_
