@@ -98,6 +98,20 @@ $ make coverage COVERAGE_OPTIMIZATION_FLAGS="-O2"
 
 Please take care that coverage reports with optimization results in unexpected one.
 
+* Use coding style checks
+
+You can use coding style checker(cpplint) if python is installed in your environment.
+
+```
+$ make check-style
+```
+
+If you would like to check coding style with cpplint's options, please use CPPLINT_OPTIONS variables like this.
+
+```
+$ make check-style CPPLINT_OPTIONS="--verbose=4"
+```
+
 * Use advanced gtest options
 
 You can use advanced gtest options via environment variables(GTEST_xxx).
@@ -111,9 +125,4 @@ $ GTEST_FILTER="square.*" make check
 For more information about advanced options, please see the following page.
 
 http://code.google.com/p/googletest/wiki/V1_6_AdvancedGuide#Running_Test_Programs:_Advanced_Options
-
-TODO
-----
-
-* Support various tests such as *make check-integration* or *make check-fuzzing*
 
