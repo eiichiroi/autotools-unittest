@@ -49,13 +49,15 @@ src_autotools_unittest_libsample_la_SOURCES = \
 # Build rules for tests.
 # TESTS_ENVIRONMENT: Set environment variables for the test run
 # TESTS: Define programs run automatically by "make check"
+# UNIT_TESTS: Define programs run automatically by "make check-unit-tests"
 # check_PROGRAMS: Define programs built by "make check" but not necessarily run
 TESTS_ENVIRONMENT=
 TESTS=
+UNIT_TESTS=
 check_PROGRAMS=
 
-# Define tests with gtest
-TESTS += test/sample_test
+# Define unit tests with gtest
+UNIT_TESTS += test/sample_test
 check_PROGRAMS += test/sample_test
 test_sample_test_SOURCES = test/sample_test.cpp
 test_sample_test_CPPFLAGS = -I$(top_srcdir)/src $(GTEST_CPPFLAGS)
@@ -65,6 +67,12 @@ test_sample_test_LDADD = src/autotools-unittest/libsample.la \
                          $(GTEST_LIBS) \
                          lib/gmock/libgmock_main.la \
                          lib/gmock/libgmock.la
+
+TESTS += $(UNIT_TESTS)
+
+.PHONY: check-unit-tests
+check-unit-tests:
+	$(MAKE) $(AM_MAKEFLAGS) check TESTS=$(UNIT_TESTS)
 
 include Makefile.am.coverage
 include Makefile.am.checkstyle
