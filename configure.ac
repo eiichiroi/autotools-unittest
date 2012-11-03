@@ -20,8 +20,13 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 LT_INIT
 
 # Check for programs.
+# * Check for a C compiler.
+AC_PROG_CC
+
 # * Check for a C++ compiler.
 AC_PROG_CXX
+
+AC_LANG([C], [C++])
 
 # Check for libraries.
 # * Check for pthreads library.
@@ -66,3 +71,19 @@ AC_CONFIG_FILES([Makefile])
 
 # Actually output all declared files.
 AC_OUTPUT
+
+AC_MSG_RESULT([
+Configure Information:
+  C Compiler        : $CC
+  DEFS              : $DEFS
+  CPPFLAGS          : $CPPFLAGS
+  CFLAGS            : $CFLAGS
+
+  C++ Compiler      : $CXX
+  DEFS              : $DEFS
+  CPPFLAGS          : $CPPFLAGS
+  CXXFLAGS          : $CXXFLAGS
+
+  LDFLAGS           : $LDFLAGS
+  LIBS              : $LIBS
+])
