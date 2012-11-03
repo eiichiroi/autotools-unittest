@@ -70,9 +70,19 @@ test_sample_test_LDADD = src/autotools-unittest/libsample.la \
 
 TESTS += $(UNIT_TESTS)
 
+TESTS_ENVIRONMENT_WITH_VALGRIND="libtool --mode=execute valgrind --leak-check=full"
+
+.PHONY: check-with-valgrind
+check-with-valgrind:
+	$(MAKE) $(AM_MAKEFLAGS) check TESTS_ENVIRONMENT=$(TESTS_ENVIRONMENT_WITH_VALGRIND)
+
 .PHONY: check-unit-tests
 check-unit-tests:
 	$(MAKE) $(AM_MAKEFLAGS) check TESTS=$(UNIT_TESTS)
+
+.PHONY: check-unit-tests-with-valgrind
+check-unit-tests-with-valgrind:
+	$(MAKE) $(AM_MAKEFLAGS) check TESTS=$(UNIT_TESTS) TESTS_ENVIRONMENT=$(TESTS_ENVIRONMENT_WITH_VALGRIND)
 
 include Makefile.am.coverage
 include Makefile.am.checkstyle
