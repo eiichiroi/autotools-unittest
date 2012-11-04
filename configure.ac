@@ -51,11 +51,21 @@ AC_SUBST([GTEST_CXXFLAGS])
 AC_SUBST([GTEST_LDFLAGS])
 AC_SUBST([GTEST_LIBS])
 
-# Checks for existence of coverage tools and define variables for reporting coverage
-AC_CHECK_COVERAGE
+# * Check for Doxygen.
+# DX_???_FEATURE(ON|OFF) - control the default setting fo a Doxygen feature.
+DX_DOXYGEN_FEATURE(ON)
+DX_HTML_FEATURE(ON)
+DX_MAN_FEATURE(OFF)
+DX_PDF_FEATURE(OFF)
+DX_PS_FEATURE(OFF)
+# DX_INIT_DOXYGEN(PROJECT, [CONFIG-FILE], [OUTPUT-DOC-DIR])
+DX_INIT_DOXYGEN($PACKAGE_NAME, [Doxyfile], [doc])
 
 # Check python for the script checking coding style
 AC_CHECK_PROG(HAVE_PYTHON, python, yes, no)
+
+# Checks for existence of coverage tools and define variables for reporting coverage
+AC_CHECK_COVERAGE
 
 # Check for header files.
 
@@ -73,7 +83,8 @@ AC_CONFIG_SRCDIR([src/autotools-unittest])
 AC_CONFIG_HEADERS([config.h])
 
 # Declare output files.
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile
+                 Doxyfile])
 
 # Actually output all declared files.
 AC_OUTPUT
@@ -81,19 +92,27 @@ AC_OUTPUT
 AC_MSG_RESULT([
 Configure Information:
   C Compiler        : $CC
-  DEFS              : $DEFS
-  CPPFLAGS          : $CPPFLAGS
-  CFLAGS            : $CFLAGS
+    DEFS            :   $DEFS
+    CPPFLAGS        :   $CPPFLAGS
+    CFLAGS          :   $CFLAGS
 
   C++ Compiler      : $CXX
-  DEFS              : $DEFS
-  CPPFLAGS          : $CPPFLAGS
-  CXXFLAGS          : $CXXFLAGS
+    DEFS            :   $DEFS
+    CPPFLAGS        :   $CPPFLAGS
+    CXXFLAGS        :   $CXXFLAGS
 
-  LDFLAGS           : $LDFLAGS
-  LIBS              : $LIBS
+  Linker            : $LD
+    LDFLAGS         :   $LDFLAGS
+    LIBS            :   $LIBS
 
 Supported Build Features:
-  Coverage Reprots      : $ENABLE_COVERAGE
+  Documents             : $(if test "x$DX_FLAG_doc" = "x1"; then echo yes; else echo no; fi)
+    html                :   $(if test "x$DX_FLAG_html" = "x1"; then echo yes; else echo no; fi)
+    man                 :   $(if test "x$DX_FLAG_man" = "x1"; then echo yes; else echo no; fi)
+    pdf                 :   $(if test "x$DX_FLAG_pdf" = "x1"; then echo yes; else echo no; fi)
+    ps                  :   $(if test "x$DX_FLAG_ps" = "x1"; then echo yes; else echo no; fi)
+
   Coding Style Checks   : $HAVE_PYTHON
+
+  Coverage Reprots      : $ENABLE_COVERAGE
 ])

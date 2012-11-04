@@ -11,6 +11,7 @@ Makefile.in
 /depcomp
 /install-sh
 /missing
+/build-aux
 
 # Generated files
 autoscan.log
@@ -30,3 +31,5 @@ coverage.info
 coverage
 *.gcno
 *.gcda
+Doxyfile
+/doc

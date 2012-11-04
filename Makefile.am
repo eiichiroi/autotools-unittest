@@ -5,7 +5,8 @@ ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = \
   autogen.sh \
   scripts/change_package_name.sh \
-  scripts/cpplint.py
+  scripts/cpplint.py \
+  $(DX_DOCDIR)
 
 AM_CPPFLAGS = \
   -I$(top_srcdir)/src
@@ -63,10 +64,10 @@ test_sample_test_SOURCES = test/sample_test.cpp
 test_sample_test_CPPFLAGS = -I$(top_srcdir)/src $(GTEST_CPPFLAGS)
 test_sample_test_CXXFLAGS = $(GTEST_CXXFLAGS)
 test_sample_test_LDFLAGS = $(GTEST_LDFLAGS)
-test_sample_test_LDADD = src/autotools-unittest/libsample.la \
+test_sample_test_LDADD = $(top_builddir)/src/autotools-unittest/libsample.la \
                          $(GTEST_LIBS) \
-                         lib/gmock/libgmock_main.la \
-                         lib/gmock/libgmock.la
+                         $(top_builddir)/lib/gmock/libgmock_main.la \
+                         $(top_builddir)/lib/gmock/libgmock.la
 
 TESTS += $(UNIT_TESTS)
 
@@ -86,3 +87,5 @@ check-unit-tests-with-valgrind:
 
 include Makefile.am.coverage
 include Makefile.am.checkstyle
+include Makefile.am.doxygen
+

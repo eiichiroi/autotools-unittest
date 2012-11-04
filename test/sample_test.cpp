@@ -31,6 +31,8 @@
 
 #include "autotools-unittest/sample.h"
 
+namespace autotools_unittest {
+
 TEST(square, seven) {
   EXPECT_EQ(49, square(7));
 }
@@ -38,3 +40,5 @@ TEST(square, seven) {
 TEST(factorial, ten) {
   EXPECT_EQ(3628800, factorial(10));
 }
+
+}  // namespace autotools_unittest

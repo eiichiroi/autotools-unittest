@@ -29,6 +29,10 @@
 
 #include "autotools-unittest/sample.h"
 
+namespace autotools_unittest {
+
 int square(int n) {
   return n * n;
 }
+
+}  // namespace autotools_unittest
