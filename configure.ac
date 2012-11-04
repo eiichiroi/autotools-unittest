@@ -26,7 +26,7 @@ AC_PROG_CC
 # * Check for a C++ compiler.
 AC_PROG_CXX
 
-AC_LANG([C], [C++])
+AC_LANG([C++], [C])
 
 # Check for libraries.
 # * Check for pthreads library.
@@ -66,6 +66,11 @@ AC_CHECK_PROG(HAVE_PYTHON, python, yes, no)
 
 # Checks for existence of coverage tools and define variables for reporting coverage
 AC_CHECK_COVERAGE
+
+# Check for C++11 supports
+#   ext: use extended mode (e.g. -std=gnu++11)
+#   noext: use non-extended mode (e.g. -std=c++11)
+# AX_CXX_COMPILE_STDCXX_11([noext])
 
 # Check for header files.
 
