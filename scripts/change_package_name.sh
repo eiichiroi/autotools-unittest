@@ -118,7 +118,7 @@ if [ -n "$directories" ]; then
 fi
 
 # change file contents
-files=`find . -type f -name '*.ac' -o -name '*.am' -o -name '*.cc' -o -name '*.cpp' -o -name "*.h" | xargs grep -E -l "($old_package_name|$canonicalized_old_package_name|$upcased_old_package_name)"`
+files=`find . -type f -name 'configure.ac' -o -name 'Makefile.am*' -o -name '*.cc' -o -name '*.cpp' -o -name "*.h" | xargs grep -E -l "($old_package_name|$canonicalized_old_package_name|$upcased_old_package_name)"`
 if [ -n "$files" ]; then
   echo '==========================================================================='
   echo ''
