@@ -10,11 +10,16 @@ AC_CONFIG_AUX_DIR([build-aux])
 
 # Initialize Automake.
 # There are useful options.
-#   -Wall: Turn all warnings on.
 #   -Werror: Report warnings as errors.
 #   foreign: ignores some GNU Coding Standards.
 #   subdirs-objects: Create objects in sub-direcotories
-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
+AM_INIT_AUTOMAKE([-Werror foreign subdir-objects])
+
+# AM_PROG_AR is a new feature since automake 1.12,
+# make AM_PROG_AR work before automake 1.12
+# Libtool(LT_INIT) should use AM_PROG_AR internally,
+# newer libtool may not need to enable AM_PROG_AR explicitly.
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 
 # Initialize Libtool.
 LT_INIT
