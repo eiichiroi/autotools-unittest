@@ -119,5 +119,5 @@ Supported Build Features:
 
   Coding Style Checks   : $HAVE_PYTHON
 
-  Coverage Reprots      : $ENABLE_COVERAGE
+  Coverage Reports      : $ENABLE_COVERAGE
 ])
