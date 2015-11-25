@@ -19,7 +19,7 @@ Example
 0. Download the package and extract it
 
 ```
-$ wget http://github.com/downloads/eiichiroi/autotools-unittest/autotools-unittest-0.3.0.tar.gz
+$ wget "https://github.com/eiichiroi/autotools-unittest/archive/v0.3.0.tar.gz"
 $ tar xzf autotools-unittest-0.3.0.tar.gz
 ```
 
