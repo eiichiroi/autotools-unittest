@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 old_package_name='autotools-unittest'
 
