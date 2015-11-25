@@ -20,7 +20,7 @@ Example
 
 ```
 $ wget "https://github.com/eiichiroi/autotools-unittest/archive/v0.3.0.tar.gz"
-$ tar xzf autotools-unittest-0.3.0.tar.gz
+$ tar xzf v0.3.0.tar.gz
 ```
 
 1. Change directory name to your library name(ex. mylib) and move into the directory
