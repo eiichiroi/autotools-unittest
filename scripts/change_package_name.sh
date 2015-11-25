@@ -50,7 +50,7 @@ confirm_with_default_no()
 
 canonicalize()
 {
-  echo -n $1 | tr --complement "[:alnum:]@" "_"
+  echo -n $1 | tr -c "[:alnum:]@" "_"
 }
 
 upcase()
