@@ -4,6 +4,7 @@ ACLOCAL_AMFLAGS = -I m4
 # Nonstandard package files for distribution.
 EXTRA_DIST = \
   autogen.sh \
+  CPPLINT.cfg \
   scripts/change_package_name.sh \
   scripts/cpplint.py \
   $(DX_DOCDIR)
