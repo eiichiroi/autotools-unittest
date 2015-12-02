@@ -26,10 +26,10 @@ LT_INIT
 
 # Check for programs.
 # * Check for a C compiler.
-AC_PROG_CC
+AC_PROG_CC([clang gcc])
 
 # * Check for a C++ compiler.
-AC_PROG_CXX
+AC_PROG_CXX([clang++ g++])
 
 AC_LANG([C++], [C])
 
