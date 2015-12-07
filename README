@@ -89,10 +89,10 @@ Please check "./coverage/index.html".
 
 By default, source codes will be complied with no-optimization(-O0 option) to get more precise results.
 
-If you would like to get coverage reports with optimization, please use COVERAGE_OPTIMIZATION_FLAGS variables like this.
+If you would like to get coverage reports with optimization, please use COVERAGE_OPTFLAGS variables like this.
 
 ```
-$ make coverage COVERAGE_OPTIMIZATION_FLAGS="-O2"
+$ make coverage COVERAGE_OPTFLAGS="-O2"
 ```
 
 Please take care that coverage reports with optimization results in unexpected one.
