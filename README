@@ -80,7 +80,6 @@ Tips
 You can use coverage reporting feature if lcov is installed in your environment.
 
 ```
-$ ./configure --enable-coverage
 $ make coverage
 ...
 Successfully created coverage reports into ./coverage directory.

@@ -8,21 +8,29 @@ COVERAGE_REPORT_DIR = $(top_builddir)/coverage
         clean-coverage-report clean-coverage clean-coverage-hook-for-clean-local
 
 coverage-requirement-check:
-	@if test "x$(ENABLE_COVERAGE)" = "xno"; then \
-		echo "Coverage feature is disabled. Please execute configure with --enable-coverage option."; \
+	@if test ! -e $(GCOV); then \
+		echo "Cannot find $(GCOV). Please install gcov."; \
+		exit 1; \
+	fi
+	@if test ! -e $(LCOV); then \
+		echo "Cannot find $(LCOV). Please install lcov."; \
+		exit 1; \
+	fi
+	@if test ! -e $(GENHTML); then \
+		echo "Cannot find $(GENHTML). Please install lcov."; \
 		exit 1; \
 	fi
 
 coverage: coverage-requirement-check clean-coverage coverage-build coverage-check coverage-report
+	@echo "Please execute 'make clean' before 'make' or 'make check' to remove instrumented object files(compiled with -O0 etc.). Note that 'make clean' also remove coverage data."
 
 coverage-build: coverage-requirement-check
-	@if test `find $(top_builddir) -name "*.gcno" | wc -l` -eq 0 -a \
-		`find $(top_builddir) -name "*.bb" -o -name "*.bbg" | wc -l` -eq 0; then \
-		echo "Starting to remove old non-instrumented object files..."; \
+	@if test `find $(top_builddir) -name "*.gcno" | wc -l` -eq 0; then \
+		echo "Start to remove old non-instrumented object files..."; \
 		$(MAKE) $(AM_MAKEFLAGS) clean; \
 		echo "Successfully removed old non-instrumented object files."; \
 	fi
-	@echo "Starting to build libraries with coverage options..."
+	@echo "Start to build libraries with coverage options..."
 	$(MAKE) $(AM_MAKEFLAGS) \
 		CFLAGS="$(CFLAGS) $(COVERAGE_CFLAGS) $(COVERAGE_OPTIMIZATION_FLAGS)" \
 		CXXFLAGS="$(CXXFLAGS) $(COVERAGE_CXXFLAGS) $(COVERAGE_OPTIMIZATION_FLAGS)" \
@@ -30,7 +38,7 @@ coverage-build: coverage-requirement-check
 	@echo "Successfully built libraries with coverage options."
 
 coverage-check: coverage-requirement-check
-	@echo "Starting to run tests with instrumented libraries..."
+	@echo "Start to run tests with instrumented libraries..."
 	$(MAKE) $(AM_MAKEFLAGS) check \
 		CFLAGS="$(CFLAGS) $(COVERAGE_CFLAGS) $(COVERAGE_OPTIMIZATION_FLAGS)" \
 		CXXFLAGS="$(CXXFLAGS) $(COVERAGE_CXXFLAGS) $(COVERAGE_OPTIMIZATION_FLAGS)" \
@@ -41,15 +49,17 @@ coverage-check: coverage-requirement-check
 # Automake treat GNU make extension as warning
 # when using -Wall or -Wportability in AM_INIT_AUTOMAKE.
 coverage-report: coverage-requirement-check
-	@echo "Starting to create coverage reports..."
+	@echo "Start to create coverage reports..."
 	$(LCOV) --capture \
 		--directory "$(top_builddir)/src" \
 		--directory "$(top_builddir)/test" \
 		--base-directory "$(abspath $(top_builddir))" \
 		--output-file $(COVERAGE_INFO_FILE) \
+		--gcov-tool $(GCOV) \
 		--compat-libtool --checksum
 	$(LCOV) --extract $(COVERAGE_INFO_FILE) "$(abspath $(top_srcdir))/src/*" \
 		--extract $(COVERAGE_INFO_FILE) "$(abspath $(top_srcdir))/test/*" \
+		--gcov-tool $(GCOV) \
 		--output-file $(COVERAGE_INFO_FILE)
 	$(GENHTML) --prefix "$(abspath $(top_srcdir))" \
 		--output-directory $(COVERAGE_REPORT_DIR) \
@@ -64,11 +74,12 @@ clean-coverage-report:
 	-rm -rf $(COVERAGE_REPORT_DIR)
 
 clean-coverage: clean-coverage-report
-	-$(LCOV) --zerocounters --directory $(top_builddir)
+	-$(LCOV) --gcov-tool $(GCOV) --zerocounters --directory $(top_builddir)
+	@if test xargs --version 2>/dev/null; then \
+		find $(top_builddir) -name "*.gcno" -print | xargs -r rm; \
+	else \
+		find $(top_builddir) -name "*.gcno" -print | xargs rm; \
+	fi
 
-clean-coverage-hook-for-clean-local:
-	-find $(top_builddir) -name "*.gcno" -print | xargs -r rm
+clean-local: clean-coverage
 
-mostlyclean-local: clean-coverage
-
-clean-local: clean-coverage-hook-for-clean-local

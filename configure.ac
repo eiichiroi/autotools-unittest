@@ -70,7 +70,7 @@ DX_INIT_DOXYGEN($PACKAGE_NAME, [Doxyfile], [doc])
 AC_CHECK_PROG(HAVE_PYTHON, python, yes, no)
 
 # Checks for existence of coverage tools and define variables for reporting coverage
-AC_CHECK_COVERAGE
+AX_COVERAGE
 
 # Check for C++11 supports
 #   ext: use extended mode (e.g. -std=gnu++11)
@@ -118,11 +118,11 @@ Configure Information:
 Supported Build Features:
   Documents             : $(if test "x$DX_FLAG_doc" = "x1"; then echo yes; else echo no; fi)
     html                :   $(if test "x$DX_FLAG_html" = "x1"; then echo yes; else echo no; fi)
-    man                 :   $(if test "x$DX_FLAG_man" = "x1"; then echo yes; else echo no; fi)
     pdf                 :   $(if test "x$DX_FLAG_pdf" = "x1"; then echo yes; else echo no; fi)
-    ps                  :   $(if test "x$DX_FLAG_ps" = "x1"; then echo yes; else echo no; fi)
 
   Coding Style Checks   : $HAVE_PYTHON
 
-  Coverage Reports      : $ENABLE_COVERAGE
+  Coverage Reports      : $COVERAGE_SUPPORT
+    gcov                : $GCOV
+    lcov                : $LCOV
 ])
