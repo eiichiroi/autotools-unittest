@@ -77,10 +77,10 @@ clean-coverage-report:
 
 clean-coverage: clean-coverage-report
 	-$(LCOV) --gcov-tool $(GCOV) --zerocounters --directory $(top_builddir)
-	@if test xargs --version 2>/dev/null; then \
-		find $(top_builddir) -name "*.gcno" | xargs rm; \
+	@if xargs --version 2>/dev/null; then \
+		find $(top_builddir) -name "*.gcno" | xargs --no-run-if-empty rm; \
 	else \
-		find $(top_builddir) -name "*.gcno" | xargs -r rm; \
+		find $(top_builddir) -name "*.gcno" | xargs rm; \
 	fi
 
 clean-local: clean-coverage
