@@ -29,8 +29,8 @@ AC_DEFUN([AX_COVERAGE],
 
   AC_MSG_RESULT([$CLANG])
 
-  COVERAGE_CFLAGS="-g -fprofile-arcs -ftest-coverage"
-  COVERAGE_CXXFLAGS="-g -fprofile-arcs -ftest-coverage"
+  COVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
+  COVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
   COVERAGE_OPTFLAGS="-O0"
   COVERAGE_LDFLAGS="-fprofile-arcs -ftest-coverage"
   if test "x$GCC" = "xyes" -a "x$CLANG" = "xno"; then

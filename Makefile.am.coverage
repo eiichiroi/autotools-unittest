@@ -32,19 +32,19 @@ coverage-build: coverage-requirement-check
 	fi
 	@echo "Start to build libraries with coverage options..."
 	$(MAKE) $(AM_MAKEFLAGS) \
-		CFLAGS="$(COVERAGE_CFLAGS) $(COVERAGE_OPTFLAGS)" \
-		CXXFLAGS="$(COVERAGE_CXXFLAGS) $(COVERAGE_OPTFLAGS)" \
-		LDFLAGS="$(COVERAGE_LDFLAGS)" \
-		LIBS="$(COVERAGE_LIBS)"
+		CFLAGS="$(CFLAGS) $(COVERAGE_CFLAGS) $(COVERAGE_OPTFLAGS)" \
+		CXXFLAGS="$(CXXFLAGS) $(COVERAGE_CXXFLAGS) $(COVERAGE_OPTFLAGS)" \
+		LDFLAGS="$(LDFLAGS) $(COVERAGE_LDFLAGS)" \
+		LIBS="$(LIBS) $(COVERAGE_LIBS)"
 	@echo "Successfully built libraries with coverage options."
 
 coverage-check: coverage-requirement-check
 	@echo "Start to run tests with instrumented libraries..."
 	$(MAKE) $(AM_MAKEFLAGS) check \
-		CFLAGS="$(COVERAGE_CFLAGS) $(COVERAGE_OPTFLAGS)" \
-		CXXFLAGS="$(COVERAGE_CXXFLAGS) $(COVERAGE_OPTFLAGS)" \
-		LDFLAGS="$(COVERAGE_LDFLAGS)" \
-		LIBS="$(COVERAGE_LIBS)"
+		CFLAGS="$(CFLAGS) $(COVERAGE_CFLAGS) $(COVERAGE_OPTFLAGS)" \
+		CXXFLAGS="$(CXXFLAGS) $(COVERAGE_CXXFLAGS) $(COVERAGE_OPTFLAGS)" \
+		LDFLAGS="$(LDFLAGS) $(COVERAGE_LDFLAGS)" \
+		LIBS="$(LIBS) $(COVERAGE_LIBS)"
 	@echo "Successfully run tests with instrumented libraries."
 
 # TODO(Eiichiro Iwata): Remove GNU make extension(abspath function)
