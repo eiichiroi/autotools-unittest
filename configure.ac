@@ -94,7 +94,8 @@ AC_CONFIG_HEADERS([config.h])
 
 # Declare output files.
 AC_CONFIG_FILES([Makefile
-                 Doxyfile])
+                 Doxyfile
+                 autotools-unittest.pc])
 
 # Actually output all declared files.
 AC_OUTPUT

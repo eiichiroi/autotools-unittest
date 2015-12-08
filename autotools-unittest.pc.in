@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: @PACKAGE@
+Description: The autotools-unittest is a C++ library.
+Version: @VERSION@
+Cflags: -I${includedir}
+Libs: -L${libdir} -lsample

@@ -6,7 +6,7 @@ usage()
 {
   echo "Usage: `basename $0` [options] [--] <new package name>"
   echo 'Options:'
-  echo "\t-o\told package name. (default: $old_package_name)"
+  echo "  -o  old package name. (default: $old_package_name)"
   return 0
 }
 
@@ -81,64 +81,43 @@ canonicalized_new_package_name=`canonicalize $new_package_name`
 upcased_old_package_name=`upcase $canonicalized_old_package_name`
 upcased_new_package_name=`upcase $canonicalized_new_package_name`
 
-confirm_with_default_no "Changing package name from '$old_package_name' to '$new_package_name' ... Are you sure?"
-if [ $? -eq 0 ]; then
-  echo 'Changing package name is canceled.'
-  exit 1
-fi
+old_package_name_regexp="($old_package_name|$canonicalized_old_package_name|$upcased_old_package_name)"
 
-# change directory names
-directories=`find . -type d -name "$old_package_name"`
-if [ -n "$directories" ]; then
+files=`find . -name "*$old_package_name*"`
+content_files=`find . -type f -name "*.ac" -o -name "Makefile.am*" -o -name "*.h" -o -name "*.cpp" | xargs grep -E -l "$old_package_name_regexp"`
+if [ -n "$files" -o -n "$content_files" ]; then
   echo '==========================================================================='
   echo ''
-  echo "$directories" | while read directory
+  echo -e "$content_files\n$files" | while read file
   do
-    echo "* $directory"
+    echo "* $file"
   done
   echo ''
 
-  confirm_with_default_no 'These directory names listed above will be changed. Are you sure?'
+  confirm_with_default_no 'These files will be changed. Are you sure?'
   if [ $? -eq 0 ]; then
     echo 'Not changed.'
   else
     echo ''
-    echo "$directories" | while read directory
+    # change content of files
+    echo "$content_files" | while read file
     do
-      echo -n "* $directory ... "
-      mv "$directory" "`echo $directory | sed -e \"s/$old_package_name/$new_package_name/g\"`"
+      echo -n "* $file ... "
+      sed -i -e "s/$old_package_name/$new_package_name/g" "$file"
+      sed -i -e "s/$canonicalized_old_package_name/$canonicalized_new_package_name/g" "$file"
+      sed -i -e "s/$upcased_old_package_name/$upcased_new_package_name/g" "$file"
       if [ $? -eq 0 ]; then
         echo 'done.'
       else
         echo 'failed.'
       fi
     done
-  fi
-  echo ''
-fi
 
-# change file contents
-files=`find . -type f -name 'configure.ac' -o -name 'Makefile.am*' -o -name '*.cc' -o -name '*.cpp' -o -name "*.h" | xargs grep -E -l "($old_package_name|$canonicalized_old_package_name|$upcased_old_package_name)"`
-if [ -n "$files" ]; then
-  echo '==========================================================================='
-  echo ''
-  echo "$files" | while read file
-  do
-    echo "* $file"
-  done
-  echo ''
-
-  confirm_with_default_no 'These contents of files listed above will be changed. Are you sure?'
-  if [ $? -eq 0 ]; then
-    echo 'Not changed.'
-  else
-    echo ''
+    # change name of files
     echo "$files" | while read file
     do
       echo -n "* $file ... "
-      sed -i -e "s/$old_package_name/$new_package_name/g" "$file"
-      sed -i -e "s/$canonicalized_old_package_name/$canonicalized_new_package_name/g" "$file"
-      sed -i -e "s/$upcased_old_package_name/$upcased_new_package_name/g" "$file"
+      mv "$file" "`echo $file | sed -e \"s/$old_package_name/$new_package_name/g\"`"
       if [ $? -eq 0 ]; then
         echo 'done.'
       else
