@@ -34,26 +34,26 @@ $ cd mylib
 
 ```
 $ ./scripts/change_package_name.sh mylib
-Changing package name from 'autotools-unittest' to 'mylib' ... Are you sure? [yes/NO]: yes
-===========================================================================
-
-* ./src/autotools-unittest
-
-These directory names listed above will be changed. Are you sure? [yes/NO]: yes
-
-* ./src/autotools-unittest ... done.
-
 ===========================================================================
 
 * ./configure.ac
-* ./test/sample_test.cpp
 * ./Makefile.am
+* ./src/autotools-unittest/sample.cpp
+* ./src/autotools-unittest/sample.h
+* ./test/sample_test.cpp
+* ./autotools-unittest.pc.in
+* ./src/autotools-unittest
 
-These contents of files listed above will be changed. Are you sure? [yes/NO]: yes
+These files will be changed. Are you sure? [yes/NO]: yes
 
 * ./configure.ac ... done.
-* ./test/sample_test.cpp ... done.
 * ./Makefile.am ... done.
+* ./src/autotools-unittest/sample.cpp ... done.
+* ./src/autotools-unittest/sample.h ... done.
+* ./test/sample_test.cpp ... done.
+* ./autotools-unittest.pc.in ... done.
+* ./src/autotools-unittest ... done.
+
 ```
 
 3. Build sample codes

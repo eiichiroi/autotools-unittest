@@ -65,7 +65,7 @@ coverage-report: coverage-requirement-check
 		--output-file $(COVERAGE_INFO_FILE)
 	$(GENHTML) --prefix "$(abspath $(top_srcdir))" \
 		--output-directory $(COVERAGE_REPORT_DIR) \
-                --title autotools-unittest \
+                --title $(PACKAGE_NAME) \
 		--legend --show-details \
 		$(GENHTML_OPTIONS) \
 		$(COVERAGE_INFO_FILE)
