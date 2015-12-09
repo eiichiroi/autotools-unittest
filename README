@@ -151,3 +151,11 @@ Please try again from executing autogen.sh.
 ```
 $ ./autogen.sh && configure && make && make check
 ```
+
+### Use pkg-config
+
+Please do not forget to edit autotools-unittest.pc.in (mylib.pc.in) if you provide shared libraries. (By default, link libsample)
+
+```
+Libs: -L${libdir} -lsample
+```

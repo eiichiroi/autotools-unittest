@@ -9,6 +9,9 @@ EXTRA_DIST = \
   scripts/cpplint.py \
   $(DX_DOCDIR)
 
+pkgconfiglibdir = $(libdir)/pkgconfig
+pkgconfiglib_DATA = autotools-unittest.pc
+
 AM_CPPFLAGS = \
   -I$(top_srcdir)/src
 
