@@ -22,7 +22,7 @@ $ tar xzf v0.3.0.tar.gz
 
 ### 1. Change library name
 
-Change package name from 'autotools-unittest' to your library name
+Change package name from 'autotools-unittest' to your library name. (ex. mylib)
 
 ```
 $ mv autotools-unittest-0.3.0 mylib
