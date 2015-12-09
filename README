@@ -137,7 +137,7 @@ $ ./configure CC="gcc-5" CXX="g++-5" GCOV="gcov-5"
 
 ### Use C++11 features
 
-Edit configure.ac, uncomment the following line.
+Edit configure.ac, uncomment the following line. (enable AX_CXX_COMPILE_STDCXX_11)
 
 ```
 # Check for C++11 supports
