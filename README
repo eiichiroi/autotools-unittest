@@ -1,31 +1,26 @@
-autotools-unittest
-==================
+# autotools-unittest
 
 The autotools-unittest is a minimal starter kit when writing C++ library
 with autotools, google test(gtest) and google mock(gmock).
 This include gtest-1.7.0 and gmock-1.7.0,
 so you can use those testing framework without installation.
 
-Requirements
-------------
+## Requirements
 
 * Autoconf
 * Automake
 * Libtool
 
-Example
--------
+## Example
 
-0. Download and extract
-~~~~~~~~~~~~~~~~~~~~~~~
+### 0. Download and extract
 
 ```
 $ wget "https://github.com/eiichiroi/autotools-unittest/archive/v0.3.0.tar.gz"
 $ tar xzf v0.3.0.tar.gz
 ```
 
-1. Change library name
-~~~~~~~~~~~~~~~~~~~~~~
+### 1. Change library name
 
 Change package name from 'autotools-unittest' to your library name
 
@@ -55,8 +50,7 @@ These files will be changed. Are you sure? [yes/NO]: yes
 
 ```
 
-2. Build sample codes
-~~~~~~~~~~~~~~~~~~~~~
+### 2. Build sample codes
 
 ```
 $ ./autogen.sh
@@ -64,22 +58,18 @@ $ ./configure
 $ make
 ```
 
-3. Build unit tests and run
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### 3. Build unit tests and run
 
 
 ```
 $ make check
 ```
 
-4. Write your library
-~~~~~~~~~~~~~~~~~~~~~
+### 4. Write your library
 
-Tips
-----
+## Tips
 
-Check Coding style
-~~~~~~~~~~~~~~~~~~
+### Check Coding style
 
 You can use coding style checker(cpplint) if python is installed in your environment.
 
@@ -93,8 +83,7 @@ If you would like to check coding style with cpplint's options, please use CPPLI
 $ make check-style CPPLINT_OPTIONS="--verbose=4"
 ```
 
-Use advanced gtest options
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Use advanced gtest options
 
 You can use advanced gtest options via environment variables(GTEST_xxx).
 
@@ -108,8 +97,7 @@ For more information about advanced options, please see the following page.
 
 http://code.google.com/p/googletest/wiki/V1_7_AdvancedGuide#Running_Test_Programs:_Advanced_Options
 
-Report coverage
-~~~~~~~~~~~~~~~
+### Report coverage
 
 You can use coverage reporting feature if lcov is installed in your environment.
 
@@ -131,8 +119,7 @@ $ make coverage COVERAGE_OPTFLAGS="-O2"
 
 Please take care that coverage reports with optimization results in unexpected one.
 
-Build with clang or new gcc
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Build with clang or new gcc
 
 Execute configure with CC, CXX variables (and GCOV if you measure coverage.)
 
@@ -148,8 +135,7 @@ For gcc 5:
 $ ./configure CC="gcc-5" CXX="g++-5" GCOV="gcov-5"
 ```
 
-Use C++11 features
-~~~~~~~~~~~~~~~~~~
+### Use C++11 features
 
 Edit configure.ac, uncomment the following line.
 
