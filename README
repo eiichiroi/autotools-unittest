@@ -16,23 +16,22 @@ Requirements
 Example
 -------
 
-0. Download the package and extract it
+0. Download and extract
+~~~~~~~~~~~~~~~~~~~~~~~
 
 ```
 $ wget "https://github.com/eiichiroi/autotools-unittest/archive/v0.3.0.tar.gz"
 $ tar xzf v0.3.0.tar.gz
 ```
 
-1. Change directory name to your library name(ex. mylib) and move into the directory
+1. Change library name
+~~~~~~~~~~~~~~~~~~~~~~
+
+Change package name from 'autotools-unittest' to your library name
 
 ```
 $ mv autotools-unittest-0.3.0 mylib
 $ cd mylib
-```
-
-2. Change package name from 'autotools-unittest' to your library name
-
-```
 $ ./scripts/change_package_name.sh mylib
 ===========================================================================
 
@@ -56,7 +55,8 @@ These files will be changed. Are you sure? [yes/NO]: yes
 
 ```
 
-3. Build sample codes
+2. Build sample codes
+~~~~~~~~~~~~~~~~~~~~~
 
 ```
 $ ./autogen.sh
@@ -64,18 +64,52 @@ $ ./configure
 $ make
 ```
 
-4. Build gtest, gmock and unit tests for sample codes, and run them
+3. Build unit tests and run
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 ```
 $ make check
 ```
 
-5. Write your library
+4. Write your library
+~~~~~~~~~~~~~~~~~~~~~
 
 Tips
 ----
 
-* Use coverage reporting
+Check Coding style
+~~~~~~~~~~~~~~~~~~
+
+You can use coding style checker(cpplint) if python is installed in your environment.
+
+```
+$ make check-style
+```
+
+If you would like to check coding style with cpplint's options, please use CPPLINT_OPTIONS variables like this.
+
+```
+$ make check-style CPPLINT_OPTIONS="--verbose=4"
+```
+
+Use advanced gtest options
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can use advanced gtest options via environment variables(GTEST_xxx).
+
+For example, you can filter test cases as follows.
+
+```
+$ GTEST_FILTER="square.*" make check
+```
+
+For more information about advanced options, please see the following page.
+
+http://code.google.com/p/googletest/wiki/V1_7_AdvancedGuide#Running_Test_Programs:_Advanced_Options
+
+Report coverage
+~~~~~~~~~~~~~~~
 
 You can use coverage reporting feature if lcov is installed in your environment.
 
@@ -97,31 +131,37 @@ $ make coverage COVERAGE_OPTFLAGS="-O2"
 
 Please take care that coverage reports with optimization results in unexpected one.
 
-* Use coding style checks
+Build with clang or new gcc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use coding style checker(cpplint) if python is installed in your environment.
+Execute configure with CC, CXX variables (and GCOV if you measure coverage.)
 
-```
-$ make check-style
-```
-
-If you would like to check coding style with cpplint's options, please use CPPLINT_OPTIONS variables like this.
+For clang:
 
 ```
-$ make check-style CPPLINT_OPTIONS="--verbose=4"
+$ ./configure CC="clang" CXX="clang++" GCOV="gcov"
 ```
 
-* Use advanced gtest options
-
-You can use advanced gtest options via environment variables(GTEST_xxx).
-
-For example, you can filter test cases as follows.
+For gcc 5:
 
 ```
-$ GTEST_FILTER="square.*" make check
+$ ./configure CC="gcc-5" CXX="g++-5" GCOV="gcov-5"
 ```
 
-For more information about advanced options, please see the following page.
+Use C++11 features
+~~~~~~~~~~~~~~~~~~
 
-http://code.google.com/p/googletest/wiki/V1_7_AdvancedGuide#Running_Test_Programs:_Advanced_Options
+Edit configure.ac, uncomment the following line.
 
+```
+# Check for C++11 supports
+#   ext: use extended mode (e.g. -std=gnu++11)
+#   noext: use non-extended mode (e.g. -std=c++11)
+AX_CXX_COMPILE_STDCXX_11([noext])
+```
+
+Please try again from executing autogen.sh.
+
+```
+$ ./autogen.sh && configure && make && make check
+```
