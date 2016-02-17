@@ -16,8 +16,8 @@ so you can use those testing framework without installation.
 ### 0. Download and extract
 
 ```
-$ wget "https://github.com/eiichiroi/autotools-unittest/archive/v0.3.0.tar.gz"
-$ tar xzf v0.3.0.tar.gz
+$ wget "https://github.com/eiichiroi/autotools-unittest/archive/autotools-unittest-0.4.0.tar.gz"
+$ tar xzf autotools-unittest-0.4.0.tar.gz
 ```
 
 ### 1. Change library name
@@ -25,7 +25,7 @@ $ tar xzf v0.3.0.tar.gz
 Change package name from 'autotools-unittest' to your library name. (ex. mylib)
 
 ```
-$ mv autotools-unittest-0.3.0 mylib
+$ mv autotools-unittest-0.4.0 mylib
 $ cd mylib
 $ ./scripts/change_package_name.sh mylib
 ===========================================================================

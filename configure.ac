@@ -1,6 +1,6 @@
 # Initialize Autoconf.
 # Specify package's name, version number and bug-report address.
-AC_INIT([autotools-unittest], [0.3.0], [bug-report@address])
+AC_INIT([autotools-unittest], [0.4.0], [bug-report@address])
 
 # For using custom m4 macros.
 AC_CONFIG_MACRO_DIR([m4])
