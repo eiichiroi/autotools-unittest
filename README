@@ -16,7 +16,7 @@ so you can use those testing framework without installation.
 ### 0. Download and extract
 
 ```
-$ wget "https://github.com/eiichiroi/autotools-unittest/archive/autotools-unittest-0.4.0.tar.gz"
+$ wget "https://github.com/eiichiroi/autotools-unittest/archive/0.4.0.tar.gz"
 $ tar xzf autotools-unittest-0.4.0.tar.gz
 ```
 
