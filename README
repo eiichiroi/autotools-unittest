@@ -135,22 +135,25 @@ For gcc 5:
 $ ./configure CC="gcc-5" CXX="g++-5" GCOV="gcov-5"
 ```
 
-### Use C++11 features
+### Not compile with C++11 mode
 
-Edit configure.ac, uncomment the following line. (enable AX_CXX_COMPILE_STDCXX_11)
+Edit configure.ac and comment the following line. (Disable AX_CXX_COMPILE_STDCXX_11)
 
 ```
 # Check for C++11 supports
 #   ext: use extended mode (e.g. -std=gnu++11)
 #   noext: use non-extended mode (e.g. -std=c++11)
-AX_CXX_COMPILE_STDCXX_11([noext])
+# AX_CXX_COMPILE_STDCXX_11([noext])
 ```
 
-Please try again from executing autogen.sh.
+And then, try again from executing autogen.sh.
 
 ```
-$ ./autogen.sh && configure && make && make check
+$ ./autogen.sh && ./configure && make && make check
 ```
+
+You can remove m4/ax_cxx_compile_stdcxx_11.m4.
+Please take care that "make dist" don't bundle not used m4 file.
 
 ### Use pkg-config
 

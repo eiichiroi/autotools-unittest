@@ -75,7 +75,7 @@ AX_COVERAGE
 # Check for C++11 supports
 #   ext: use extended mode (e.g. -std=gnu++11)
 #   noext: use non-extended mode (e.g. -std=c++11)
-# AX_CXX_COMPILE_STDCXX_11([noext])
+AX_CXX_COMPILE_STDCXX_11([noext])
 
 # Check for header files.
 
