@@ -38,7 +38,7 @@ AC_LANG([C++], [C])
 ACX_PTHREAD([have_pthread=yes], [heve_pthread=no])
 
 # Define variables for unit test using gtest
-GTEST_VERSION="1.7.0"
+GTEST_VERSION="1.8.0"
 if test "x$have_pthread" = "xyes"; then
   GTEST_CPPFLAGS="-DGTEST_HAS_PTHREAD=1 -I\$(top_srcdir)/lib/gmock"
   GTEST_CXXFLAGS="$PTHREAD_CFLAGS"
