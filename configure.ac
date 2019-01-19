@@ -35,7 +35,7 @@ AC_LANG([C++], [C])
 
 # Check for libraries.
 # * Check for pthreads library.
-ACX_PTHREAD([have_pthread=yes], [heve_pthread=no])
+ACX_PTHREAD([have_pthread=yes], [have_pthread=no])
 
 # Define variables for unit test using gtest
 GTEST_VERSION="1.8.0"
